@@ -1,0 +1,16 @@
+player_name,brand_name,deal_value_usd,deal_value_type,confidence,contract_start,contract_end,source_url,notes
+LeBron James,Nike,$32M,annual,confirmed,2015-12-07,,https://www.nike.com/,Lifetime deal worth $1B+
+LeBron James,Coca-Cola,$18M,estimated_annual,estimated,2021-01-01,2027-12-31,https://www.coca-cola.com/,Multi-year partnership
+LeBron James,AT&T,$15M,estimated_annual,estimated,2023-01-01,2026-12-31,https://about.att.com/,Technology partnership
+Stephen Curry,Under Armour,$20M,annual,confirmed,2013-09-01,,https://about.underarmour.com/,Equity stake + cash deal
+Stephen Curry,Chase,$10M,estimated_annual,estimated,2021-06-01,2025-06-01,https://www.chase.com/,Financial services partnership
+Giannis Antetokounmpo,Nike,$10M,estimated_annual,confirmed,2017-01-01,,https://www.nike.com/,Signature shoe line
+Giannis Antetokounmpo,2K Sports,$8M,estimated_annual,estimated,2022-01-01,2025-12-31,https://2k.com/,Video game cover deal
+Kevin Durant,Nike,$26M,annual,confirmed,2014-09-01,,https://www.nike.com/,10-year $300M deal
+Luka Doncic,Jordan Brand,$7M,estimated_annual,confirmed,2019-06-01,,https://www.nike.com/jordan,Rising star partnership
+Damian Lillard,Adidas,$10M,estimated_annual,confirmed,2014-10-01,,https://www.adidas.com/,Signature Dame line
+Joel Embiid,Under Armour,$8M,estimated_annual,confirmed,2018-11-01,,https://about.underarmour.com/,Process signature line
+Ja Morant,Nike,$12M,estimated_annual,confirmed,2019-07-01,,https://www.nike.com/,Multi-year rookie deal
+Kawhi Leonard,New Balance,$5M,annual,confirmed,2019-11-01,,https://www.newbalance.com/,Left Jordan for NB
+Anthony Edwards,Adidas,$6M,estimated_annual,confirmed,2020-12-01,,https://www.adidas.com/,Young talent investment
+Jayson Tatum,Jordan Brand,$8M,estimated_annual,confirmed,2019-01-01,,https://www.nike.com/jordan,St. Louis connection
