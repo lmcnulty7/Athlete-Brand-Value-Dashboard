@@ -1,3 +1,6 @@
+// Same default as src/lib/api.ts, so a fresh clone builds without .env.local
+const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -5,7 +8,7 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: process.env.NEXT_PUBLIC_API_URL + '/:path*',
+        destination: apiUrl + '/:path*',
       },
     ]
   },
