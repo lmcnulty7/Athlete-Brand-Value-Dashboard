@@ -56,6 +56,8 @@ Top Player:     LeBron James ($196M/year from 20 deals)
 Top Brands:     Nike, Under Armour, Adidas, Google, Chase, Gatorade
 ```
 
+> **About the data:** endorsement values are illustrative estimates compiled by hand for this portfolio project, not audited or reported figures. Rows marked `confirmed` are not individually sourced, so treat every dollar value as an estimate. The snapshot above describes the development database as of March 2026 (see Known Issues & Notes for loading data from a fresh clone).
+
 ---
 
 ## 🚀 Quick Start (5 Minutes)
@@ -85,11 +87,11 @@ docker compose ps
 # Database:  localhost:5432 (postgres/postgres)
 ```
 
-**The database is already seeded!** You should immediately see 40 players with 84 deals when you open http://localhost:3000.
+**Note:** on first start, `database/init.sql` creates the schema and inserts 16 starter brands only. It does not load players or deals, so the dashboard starts empty. The 40-player / 84-deal snapshot above came from a development database that the seed scripts in `scripts/` do not yet reproduce (see Known Issues & Notes).
 
 ### Option 2: Manual Setup
 
-See [MANUAL_SETUP.md](./manual-setup.sh) for detailed instructions.
+Run [`manual-setup.sh`](./manual-setup.sh) to install dependencies and create the schema without Docker.
 
 ---
 
@@ -159,13 +161,14 @@ Athlete-Brand-Value-Dashboard/
 │   └── package.json
 │
 ├── database/
-│   └── init.sql                 # Database schema & initial setup
+│   └── init.sql                 # Database schema + 16 starter brands
 │
 ├── scripts/
-│   └── (seed scripts - data already in DB)
+│   └── (seed scripts - see Known Issues & Notes)
 │
 ├── docker-compose.yml           # Multi-container orchestration
-├── .env                         # Environment variables (already configured)
+├── .env.example                 # Copy to .env (make setup)
+├── LICENSE                      # MIT
 └── README.md                    # This file
 ```
 
@@ -367,6 +370,7 @@ docker compose down -v
 2. **Data Scope**: 84 deals for 10 top players (needs expansion to 200+ deals across 50 players)
 3. **No User Authentication**: Dashboard is public (not needed for portfolio/analytics use case)
 4. **Static Tier Filter**: Only supports player tier filtering, not team/brand/value
+5. **Seed scripts out of sync with the schema**: run against `database/init.sql`, `scripts/comprehensive_seed.sql` loads 40 players and 41 brands, but its endorsement inserts use column names the `endorsements` table does not define (`brand_category`, `contract_start`, `contract_end`, `equity_stake`, `source_url`), so no deals load; it also repeats player ID 203114. `scripts/insert_comprehensive_endorsements.py` matches the schema but references 9 players the SQL seed does not create. Until these are reconciled, a fresh clone has no deal data.
 
 ### Technical Notes
 
@@ -382,10 +386,10 @@ docker compose down -v
 ### Data Sources
 
 - **Player data**: NBA Stats API via `nba_api` Python library
-- **Endorsement values**: Public reporting (ESPN, Sports Business Journal, Spotrac estimates)
+- **Endorsement values**: illustrative estimates compiled by hand, informed by general public reporting (ESPN, Sports Business Journal, Spotrac estimates); individual rows are not cited
 - **Brand info**: Company websites, press releases
-- **Confidence levels**:
-  - "confirmed" = Official press release
+- **Confidence levels** (labels assigned by hand during data entry, not verified row by row):
+  - "confirmed" = meant to mark officially announced deals; these rows are not individually sourced and the dollar value is still an estimate
   - "estimated" = Industry reporting
   - "rumored" = Unverified sources
 
@@ -414,11 +418,16 @@ This is a portfolio project. If continuing development:
 3. **Testing**: Test changes locally with `docker compose up -d` before committing
 4. **Documentation**: Update this README if adding major features
 
+### Contributors
+
+- [Lucien McNulty](https://github.com/lmcnulty7): project owner
+- [awinter4](https://github.com/awinter4): wrote the dashboard codebase (FastAPI backend, PostgreSQL schema, Next.js frontend and seed scripts) in commit `292a1a3`
+
 ---
 
 ## 📝 License
 
-MIT License - see LICENSE file for details
+MIT License - see [LICENSE](./LICENSE) for details
 
 ---
 
@@ -436,6 +445,6 @@ This project demonstrates:
 
 ---
 
-**Last Updated**: March 26, 2026
+**Last Updated**: October 3, 2026
 **Current Version**: v1.0-alpha
 **Status**: Active Development
